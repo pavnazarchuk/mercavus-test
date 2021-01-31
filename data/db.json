@@ -1,0 +1,10 @@
+{
+    "users": [{
+        "id": 1,
+        "hobbies": [{
+            "passion": "low",
+            "hobby": "football",
+            "year": 2014
+        }]
+    }]
+}
