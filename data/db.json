@@ -1,10 +1,31 @@
 {
     "users": [{
         "id": 1,
-        "hobbies": [{
-            "passion": "low",
-            "hobby": "football",
-            "year": 2014
-        }]
+        "name": "John"
+    },
+    {
+        "id": 2,
+        "name": "Doe"
+    }],
+    "hobbies": [{
+        "id": 1,
+        "passion": "low",
+        "hobby": "football",
+        "year": 2014,
+        "userId": 1
+    },
+    {
+        "id": 2,
+        "passion": "low",
+        "hobby": "football",
+        "year": 2014,
+        "userId": 1
+    },
+    {
+        "id": 3,
+        "passion": "low",
+        "hobby": "football",
+        "year": 2014,
+        "userId": 2
     }]
 }

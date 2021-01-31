@@ -1,0 +1,22 @@
+.errorTitle {
+  margin-top: 100px;
+  font-weight: 500;
+  font-size: 30px;
+  text-align: center;
+}
+
+.userTable {
+  max-width: 800px;
+}
+
+.userTable_row {
+  display: flex;
+}
+
+.usersTableUsersCol {
+  width: 30%;
+}
+
+.usersTableHobbiesCol {
+  width: 70%;
+}
