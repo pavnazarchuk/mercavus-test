@@ -1,0 +1,43 @@
+.errorTitle {
+  margin-top: 100px;
+  font-weight: 500;
+  font-size: 30px;
+  text-align: center;
+}
+
+.usersTable {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.usersTable_row {
+  display: flex;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+
+  &:first-child {
+    border-top: 1px solid #000;
+  }
+}
+
+.usersTableUsersCell {
+  padding: 8px;
+}
+
+.usersTableUsersCol {
+  width: 30%;
+  border-right: 1px solid #000;
+}
+
+.usersTableHobbiesCol {
+  width: 70%;
+}
+
+.usersTableHobbiesRow {
+  display: flex;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #000;
+  }
+}

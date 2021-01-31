@@ -1,31 +1,51 @@
 {
-    "users": [{
-        "id": 1,
-        "name": "John"
+  "users": [
+    {
+      "id": 0,
+      "name": "John"
     },
     {
-        "id": 2,
-        "name": "Doe"
-    }],
-    "hobbies": [{
-        "id": 1,
-        "passion": "low",
-        "hobby": "football",
-        "year": 2014,
-        "userId": 1
+      "id": 1,
+      "name": "Doe"
     },
     {
-        "id": 2,
-        "passion": "low",
-        "hobby": "football",
-        "year": 2014,
-        "userId": 1
+      "name": "asd",
+      "id": 2
     },
     {
-        "id": 3,
-        "passion": "low",
-        "hobby": "football",
-        "year": 2014,
-        "userId": 2
-    }]
+      "name": "asd123",
+      "id": 3
+    },
+    {
+      "name": "1234",
+      "id": 4
+    },
+    {
+      "name": "aksf",
+      "id": 5
+    }
+  ],
+  "hobbies": [
+    {
+      "id": 0,
+      "passion": "low",
+      "hobby": "football",
+      "year": "2014",
+      "userId": 0
+    },
+    {
+      "id": 1,
+      "passion": "low",
+      "hobby": "football",
+      "year": "2014",
+      "userId": 0
+    },
+    {
+      "id": 2,
+      "passion": "low",
+      "hobby": "football",
+      "year": "2014",
+      "userId": 1
+    }
+  ]
 }

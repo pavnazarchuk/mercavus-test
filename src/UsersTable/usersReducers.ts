@@ -1,7 +1,15 @@
-import { SetUsers } from './types';
+import { AddNewUser, SetActiveUser, SetUsers } from './types';
 
 const setUsers: SetUsers = (state, action) => {
-  state.users = action.payload;
+  state.usersData = action.payload;
 };
 
-export default { setUsers };
+const addNewUser: AddNewUser = (state, action) => {
+  state.usersData = [...state.usersData, action.payload];
+};
+
+const setActiveUser: SetActiveUser = (state, action) => {
+  state.activeUser = action.payload;
+};
+
+export default { setUsers, addNewUser, setActiveUser };
