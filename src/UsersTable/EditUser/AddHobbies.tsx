@@ -1,9 +1,13 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import Select, { ValueType } from 'react-select';
 
+import classnames from 'classnames';
+import { StoreType } from 'store';
 import Input from 'UsersTable/Components/Input';
 
 import Button from '../Components/Button';
+import { selectActiveUser } from '../usersSlice';
 import styles from '../UsersTable.module.scss';
 import { IAddHobbiesProps, IAddHobbiesState, OptionType } from './types';
 
@@ -37,25 +41,33 @@ class AddHobbies extends React.Component<IAddHobbiesProps> {
   };
 
   addHobbies = () => {
+    const { activeUser } = this.props;
     const { hobby, year, passion } = this.state;
     const passionValue = passion?.value;
 
-    if (hobby && year && passionValue) {
+    if (hobby && year && passionValue && activeUser !== undefined) {
       this.props.addHobbies({
         year,
         hobby,
         passion: passionValue,
+        activeUser,
       });
     }
   };
 
   render() {
+    const { activeUser } = this.props;
     const { hobby, year } = this.state;
 
     return (
       <div className={styles.usersTableHobbiesCol}>
         <div className={styles.usersTableHobbiesRow}>
-          <div className={styles.usersTableUsersCell}>
+          <div
+            className={classnames([
+              styles.usersTableUsersCell,
+              styles.userTableSelect,
+            ])}
+          >
             <Select options={options} onChange={this.selectPassion} />
           </div>
           <p className={styles.usersTableUsersCell}>
@@ -72,11 +84,17 @@ class AddHobbies extends React.Component<IAddHobbiesProps> {
               placeholder="Enter year"
             />
           </p>
-          <Button onClick={this.addHobbies}>Add</Button>
+          <Button disabled={activeUser === null} onClick={this.addHobbies}>
+            Add
+          </Button>
         </div>
       </div>
     );
   }
 }
 
-export default AddHobbies;
+const mapStateToProps = (store: StoreType) => ({
+  activeUser: selectActiveUser(store),
+});
+
+export default connect(mapStateToProps)(AddHobbies);

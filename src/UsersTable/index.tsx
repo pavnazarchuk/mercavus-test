@@ -6,10 +6,10 @@ import { StoreType } from 'store';
 
 import EditUser from './EditUser';
 import HobbiesCol from './HobbiesCol';
-import { getUsers } from './services';
+import { getHobbies, getUsers } from './services';
 import { IUsersTableProps, IUsersTableState } from './types';
 import UserCol from './UserCol';
-import { selectUsers, setUsers } from './usersSlice';
+import { selectUsers, setHobbies, setUsers } from './usersSlice';
 import styles from './UsersTable.module.scss';
 
 class UsersTable extends React.Component<IUsersTableProps> {
@@ -28,10 +28,24 @@ class UsersTable extends React.Component<IUsersTableProps> {
     }
   }
 
-  fetchData = async () => {
+  fetchData = () => {
+    this.fetchUsers();
+    this.fetchHobbies();
+  };
+
+  fetchUsers = async () => {
     try {
       const { data } = await getUsers();
       this.props.setUsers(data);
+    } catch (err) {
+      this.setState({ error: true });
+    }
+  };
+
+  fetchHobbies = async () => {
+    try {
+      const { data } = await getHobbies();
+      this.props.setHobbies(data);
     } catch (err) {
       this.setState({ error: true });
     }
@@ -46,14 +60,18 @@ class UsersTable extends React.Component<IUsersTableProps> {
     return (
       <div className={styles.usersTable}>
         <EditUser usersLength={users?.length} />
-        {users?.map(user => {
-          return (
-            <div key={user.id} className={styles.usersTable_row}>
-              <UserCol name={user.name} id={user.id} />
-              <HobbiesCol hobbies={user.hobbies} />
-            </div>
-          );
-        })}
+        <div className={styles.usersTable_container}>
+          <div className={styles.usersTableUsersCol}>
+            {users?.map(user => {
+              return (
+                <div key={user.id} className={styles.usersTable_row}>
+                  <UserCol name={user.name} id={user.id} />
+                </div>
+              );
+            })}
+          </div>
+          <HobbiesCol />
+        </div>
       </div>
     );
   }
@@ -65,6 +83,7 @@ const mapStateToProps = (store: StoreType) => ({
 
 const mapDispatchToProps = {
   setUsers,
+  setHobbies,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersTable);

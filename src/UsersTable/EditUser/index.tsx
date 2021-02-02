@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Hobby } from 'UsersTable/types';
-
-import { addUser } from '../services';
-import { addNewUser } from '../usersSlice';
+import { addHobbies, addUser } from '../services';
+import { addNewHobby, addNewUser } from '../usersSlice';
 import styles from '../UsersTable.module.scss';
 import AddHobbies from './AddHobbies';
 import AddUser from './AddUser';
-import { IEditUser } from './types';
+import { Hobbies, IEditUser } from './types';
 
 class EditUser extends React.Component<IEditUser> {
   addUser = async (name: string) => {
@@ -23,8 +21,16 @@ class EditUser extends React.Component<IEditUser> {
     });
   };
 
-  addHobbies = async (hobbies: Omit<Hobby, 'id' | 'userId'>) => {
-    console.log(hobbies, 'hobbies');
+  addHobbies = async (newHobbies: Hobbies) => {
+    const { activeUser, ...rest } = newHobbies;
+    if (activeUser !== undefined) {
+      const newData = {
+        ...rest,
+        userId: activeUser,
+      };
+      const { data } = await addHobbies(newData);
+      this.props.addNewHobby(data);
+    }
   };
 
   render() {
@@ -36,7 +42,9 @@ class EditUser extends React.Component<IEditUser> {
     );
   }
 }
+
 const mapDispatchToProps = {
+  addNewHobby,
   addNewUser,
 };
 

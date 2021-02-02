@@ -1,5 +1,9 @@
 import { Hobby, PassionType } from 'UsersTable/types';
-import { AddNewUserActionType } from 'UsersTable/usersSlice';
+import {
+  AddNewHobbyActionType,
+  AddNewUserActionType,
+  SelectActiveUser,
+} from 'UsersTable/usersSlice';
 
 export interface IAddUserProps {
   addUser: (name: string) => void;
@@ -7,6 +11,7 @@ export interface IAddUserProps {
 
 export interface IEditUser {
   usersLength: number;
+  addNewHobby: AddNewHobbyActionType;
   addNewUser: AddNewUserActionType;
 }
 
@@ -16,8 +21,12 @@ export interface IAddHobbiesState {
   passion?: OptionType;
 }
 
+export type Hobbies = Omit<Hobby, 'id' | 'userId'> & {
+  activeUser: SelectActiveUser;
+};
 export interface IAddHobbiesProps {
-  addHobbies: (hobbies: Omit<Hobby, 'id' | 'userId'>) => void;
+  addHobbies: (hobbies: Hobbies) => void;
+  activeUser: SelectActiveUser;
 }
 
 export type OptionType = {

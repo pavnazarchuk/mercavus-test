@@ -6,8 +6,12 @@
 }
 
 .usersTable {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.usersTable_container {
+  display: flex;
 }
 
 .usersTable_row {
@@ -25,19 +29,26 @@
   padding: 8px;
 }
 
+.userTableSelect {
+  width: 30%;
+}
+
 .usersTableUsersCol {
   width: 30%;
   border-right: 1px solid #000;
 }
 
+.usersTableUsersButtom {
+  width: 100%;
+}
+
 .usersTableHobbiesCol {
   width: 70%;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
 .usersTableHobbiesRow {
   display: flex;
-
-  &:not(:last-child) {
-    border-bottom: 1px solid #000;
-  }
+  border-bottom: 1px solid #000;
 }
