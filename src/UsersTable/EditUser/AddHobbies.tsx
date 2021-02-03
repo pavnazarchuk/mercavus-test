@@ -45,7 +45,7 @@ class AddHobbies extends React.Component<IAddHobbiesProps> {
     const { hobby, year, passion } = this.state;
     const passionValue = passion?.value;
 
-    if (hobby && year && passionValue && activeUser !== undefined) {
+    if (hobby && year && passionValue && activeUser !== null) {
       this.props.addHobbies({
         year,
         hobby,
@@ -57,34 +57,39 @@ class AddHobbies extends React.Component<IAddHobbiesProps> {
 
   render() {
     const { activeUser } = this.props;
-    const { hobby, year } = this.state;
+    const { hobby, year, passion } = this.state;
+    const disabled = activeUser === null || !hobby || !year || !passion?.value;
 
     return (
       <div className={styles.usersTableHobbiesCol}>
         <div className={styles.usersTableHobbiesRow}>
-          <div
-            className={classnames([
-              styles.usersTableUsersCell,
-              styles.userTableSelect,
-            ])}
-          >
-            <Select options={options} onChange={this.selectPassion} />
+          <div className={styles.usersTableHobbiesSubRow}>
+            <div
+              className={classnames([
+                styles.usersTableUsersCell,
+                styles.userTableSelect,
+              ])}
+            >
+              <Select options={options} onChange={this.selectPassion} />
+            </div>
+            <div className={styles.usersTableUsersCell}>
+              <Input
+                value={hobby}
+                onChange={this.handleHobby}
+                placeholder="Enter hobby"
+                className={styles.usersTableInput}
+              />
+            </div>
+            <div className={styles.usersTableUsersCell}>
+              <Input
+                value={year}
+                onChange={this.handleYear}
+                placeholder="Enter year"
+                className={styles.usersTableInput}
+              />
+            </div>
           </div>
-          <p className={styles.usersTableUsersCell}>
-            <Input
-              value={hobby}
-              onChange={this.handleHobby}
-              placeholder="Enter hobby"
-            />
-          </p>
-          <p className={styles.usersTableUsersCell}>
-            <Input
-              value={year}
-              onChange={this.handleYear}
-              placeholder="Enter year"
-            />
-          </p>
-          <Button disabled={activeUser === null} onClick={this.addHobbies}>
+          <Button disabled={disabled} onClick={this.addHobbies}>
             Add
           </Button>
         </div>

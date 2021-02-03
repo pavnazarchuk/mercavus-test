@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+import classnames from 'classnames';
+
+import styles from './Input.module.scss';
+
 const Input: React.FC<React.HTMLProps<HTMLInputElement>> = ({
   onChange,
   ...props
@@ -18,7 +22,14 @@ const Input: React.FC<React.HTMLProps<HTMLInputElement>> = ({
     }
   };
 
-  return <input {...props} onChange={onChangeHandler} value={state} />;
+  return (
+    <input
+      {...props}
+      className={classnames([styles.input, props.className])}
+      onChange={onChangeHandler}
+      value={state}
+    />
+  );
 };
 
 export default Input;

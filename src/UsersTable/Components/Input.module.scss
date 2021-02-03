@@ -1,0 +1,9 @@
+@import '../colors.scss';
+
+.input {
+  padding: 9px 16px;
+  font-size: 16px;
+  line-height: 18px;
+  border: 1px solid $gray;
+  border-radius: 4px;
+}

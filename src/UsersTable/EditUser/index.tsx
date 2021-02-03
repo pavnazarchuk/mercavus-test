@@ -35,7 +35,7 @@ class EditUser extends React.Component<IEditUser> {
 
   render() {
     return (
-      <div className={styles.usersTable_row}>
+      <div className={styles.editUsersRow}>
         <AddUser addUser={this.addUser} />
         <AddHobbies addHobbies={this.addHobbies} />
       </div>

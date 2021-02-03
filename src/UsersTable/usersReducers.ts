@@ -20,7 +20,9 @@ const addNewUser: AddNewUser = (state, action) => {
 };
 
 const setActiveUser: SetActiveUser = (state, action) => {
-  state.activeUser = action.payload;
+  const activeUser =
+    state.activeUser === action.payload ? null : action.payload;
+  state.activeUser = activeUser;
 };
 
 const addNewHobby: AddNewHobby = (state, action) => {

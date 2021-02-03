@@ -18,9 +18,10 @@ class UserCol extends React.Component<IUserCol> {
     return (
       <button
         onClick={this.selectUser}
-        className={classnames(styles.usersTableUsersButtom, {
-          active,
-        })}
+        className={classnames(
+          styles.usersTableUsersButton,
+          active ? styles.usersTableUsersButton_active : '',
+        )}
       >
         <span className={styles.usersTableUsersCell}>{name}</span>
       </button>
