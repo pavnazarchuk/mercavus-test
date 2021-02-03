@@ -1,4 +1,4 @@
-import { UserData } from 'UsersTable/types';
+import { Hobby, UserData } from 'UsersTable/types';
 import {
   RemoveHobbyActionType,
   SelectActiveUser,
@@ -13,4 +13,9 @@ export interface IHobbiesColProps {
 
 export interface IHobbiesColState {
   hobbies: UserData['hobbies'];
+}
+
+export interface IHobbyRowProps {
+  hobby: Hobby;
+  removeHobby: (id: number) => void;
 }

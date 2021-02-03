@@ -11,11 +11,10 @@ const AddUser: React.FC<IAddUserProps> = ({ addUser }) => {
   const handleUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
   };
+
   const onAddUserHandler = () => {
-    if (userName) {
-      addUser(userName);
-      setUserName('');
-    }
+    addUser(userName);
+    setUserName('');
   };
 
   return (
